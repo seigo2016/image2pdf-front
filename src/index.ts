@@ -84,7 +84,7 @@ submitButton.addEventListener("click", function () {
     formData.append("files", blob);
     formData.append("filename", filename);
   }
-  fetch("http://api.img2pdf.seigo2016.com/convert", {
+  fetch("https://api.img2pdf.seigo2016.com/convert", {
     method: "POST",
     body: formData,
   })
