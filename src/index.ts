@@ -14,7 +14,7 @@ function createFileElement(file: File): HTMLElement {
   let reader = new FileReader();
   let dataUrl: string;
   let li = document.createElement("li");
-  li.classList.add("file-item", "mt-1");
+  li.classList.add("file-item", "mt-1", "border");
   let dev = document.createElement("div");
   dev.classList.add("flex", "md:w-1/2", "m-auto");
   let deleteButton = document.createElement("button");
@@ -22,11 +22,12 @@ function createFileElement(file: File): HTMLElement {
     "bg-red-400",
     "hover:bg-red-700",
     "text-white",
-    "m-2",
-    "px-2",
+    "m-1",
+    "px-1",
     "py-1",
     "rounded",
-    "h-8"
+    "text-xs",
+    "h-7"
   );
   deleteButton.innerText = "削除";
   deleteButton.addEventListener("click", function () {
@@ -35,9 +36,8 @@ function createFileElement(file: File): HTMLElement {
   let img = document.createElement("img");
   img.classList.add(
     "mx-2",
-    "md:w-2/3",
-    "w-3/4",
-    "border",
+    "w-1/2",
+    "md:w-3/5",
     "p-2",
     "rounded",
     "image-item"
@@ -91,11 +91,9 @@ submitButton.addEventListener("click", function () {
     .then((res) => res.blob())
     .then((blob) => {
       const url = URL.createObjectURL(blob);
-      console.log(url);
-      console.log(filename);
       resultLink.href = url;
       resultLink.innerText = "クリックしてダウンロード";
-      resultLink.download = filename + ".pdf";
+      resultLink.download = filename;
       resultLink.classList.remove("hidden");
     });
 });
